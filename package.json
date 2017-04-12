@@ -1,0 +1,29 @@
+{
+  "name": "appshell-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "css": "postcss --use postcss-cssnext --no-map -o www/app.css app.css",
+    "js": "cp *.js www/",
+    "assets": "npm run css && npm run js",
+    "prepages": "npm run rev",
+    "pages": "ejs-cli --file index.ejs --options www/asset-manifest.json > www/index.html",
+    "rev": "nodeRev www/app.css,www/app.js --hash -o www --file www/asset-manifest.json",
+    "headers": "ejs-cli --file _headers.ejs --options www/asset-manifest.json > www/_headers",
+    "prebuild": "rm -rf www/*",
+    "build": "npm run assets && npm run pages",
+    "postbuild": "npm run headers",
+    "prestart": "npm run build",
+    "start": "browser-sync start --server www"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "ejs-cli": "^2.0.0",
+    "node-rev": "^1.3.0",
+    "postcss-cli": "^3.1.1",
+    "postcss-cssnext": "^2.10.0"
+  }
+}

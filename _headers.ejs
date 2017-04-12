@@ -1,0 +1,13 @@
+<%
+const values = Object.values(locals);
+const styles = values.filter(url => url.endsWith('.css'));
+const scripts = values.filter(url => url.endsWith('.js'));
+%>
+
+/*.html
+  <%_ for (const url of styles) { _%>
+  Link: <<%= url %>>; rel=preload; as=style
+  <%_ } -%>
+  <%_ for (const url of scripts) { _%>
+  Link: <<%= url %>>; rel=preload; as=script
+  <%_ } -%>

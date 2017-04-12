@@ -1,0 +1,9 @@
+:root {
+  --background: blue;
+}
+
+html {
+  background: var(--background);
+  color: white;
+  font: 20px/1.5 sans-serif;
+}

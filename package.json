@@ -8,7 +8,7 @@
     "js": "rollup app.js -c -o www/app.js && rollup sw.js -c -o www/sw.js",
     "assets": "npm run css && npm run js",
     "prepages": "npm run rev",
-    "pages": "ejs-cli --file index.ejs --options www/asset-manifest.json > www/index.html",
+    "pages": "ejs-cli '{index,error}.ejs' --options www/asset-manifest.json --out www/",
     "rev": "nodeRev www/app.css,www/app.js --hash -o www --file www/asset-manifest.json",
     "headers": "ejs-cli --file _headers.ejs --options www/asset-manifest.json > www/_headers",
     "prebuild": "rm -rf www/*",

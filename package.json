@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "css": "postcss --use postcss-cssnext --no-map -o www/app.css app.css",
-    "js": "cp *.js www/",
+    "js": "rollup app.js -c -o www/app.js && rollup sw.js -c -o www/sw.js",
     "assets": "npm run css && npm run js",
     "prepages": "npm run rev",
     "pages": "ejs-cli --file index.ejs --options www/asset-manifest.json > www/index.html",
@@ -24,6 +24,8 @@
     "ejs-cli": "^2.0.0",
     "node-rev": "^1.3.0",
     "postcss-cli": "^3.1.1",
-    "postcss-cssnext": "^2.10.0"
+    "postcss-cssnext": "^2.10.0",
+    "rollup": "^0.41.6",
+    "rollup-plugin-json": "^2.1.1"
   }
 }
